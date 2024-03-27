@@ -1,6 +1,8 @@
 <?php
 class GenGif
 {
+    public const SPACE = 170;
+    public const FRAMELIMIT = 13;
     private $gifPaths = [];
     private $gifImages = [];
     private $totalWidth;
@@ -39,11 +41,11 @@ class GenGif
             }
             elseif ($gifPath === './assets/gif/ .gif') {
                 $spaceImage = new Imagick();
-                $spaceImage->newImage(170, 170, 'none');
+                $spaceImage->newImage(GenGif::SPACE, GenGif::SPACE, 'none');
                 $this->gifImages[] = $spaceImage;
             }
             else {
-                echo 'Ошибка', die;
+                echo 'Error', die;
             }
         }
     }
@@ -73,9 +75,7 @@ class GenGif
             $gif->setIteratorIndex(0);
         }
 
-        $frameLimit = 13;
-
-        for ($i = 0; $i < $frameLimit; $i++) 
+        for ($i = 0; $i < GenGif::FRAMELIMIT; $i++) 
         {
             $this->mergedGif->newImage($this->totalWidth, $this->maxHeight, 'none');
             $this->mergedGif->setimagedispose(2);
