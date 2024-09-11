@@ -9,12 +9,13 @@ class GenGif
     private $maxHeight;
     private $mergedGif;
 
-    public function __construct($word, $gifPathPrefix = './assets/gif/')
+    private $word;
+    private $gifPathPrefix = './assets/gif/';
+
+    public function __construct($word)
     {
         $this->word = $word;
-        $this->gifPathPrefix = $gifPathPrefix;
     }
-
     public function createGIF()
     {
         $this->genGifPaths();
